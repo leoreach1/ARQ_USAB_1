@@ -27,6 +27,10 @@ namespace Ejercicio1_Builder
             TieneGps = builder.TieneGps;
         }
 
+        /// <summary>
+        /// Devuelve una representación en cadena del objeto Automovil, mostrando sus propiedades y valores.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return $"Automóvil [Motor: {Motor} | Color: {Color} | Llantas: {Llantas} | " +
