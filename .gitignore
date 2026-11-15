@@ -1,0 +1,116 @@
+# =============================================================================
+#  .gitignore — Proyectos C# / .NET en Visual Studio
+#  Universidad de La Sabana · Maestría en Arquitectura de Software
+#  Actividad 1 – Patrones de Diseño (GoF)
+# =============================================================================
+
+# ── Carpetas de compilación y artefactos de build ────────────────────────────
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Bb]uild/
+[Ll]og/
+[Ll]ogs/
+
+# ── Directorios de Visual Studio ─────────────────────────────────────────────
+.vs/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+
+# ── NuGet ─────────────────────────────────────────────────────────────────────
+*.nupkg
+*.snupkg
+# Excluir la caché local de paquetes restaurados (ya están en nuget.org)
+packages/
+!**/packages/repositories.config
+# Archivos generados por restore de NuGet (siempre regenerables)
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# ── Rider / JetBrains ─────────────────────────────────────────────────────────
+.idea/
+*.sln.iml
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+
+# ── VS Code ───────────────────────────────────────────────────────────────────
+.vscode/
+!.vscode/extensions.json
+!.vscode/launch.json
+!.vscode/tasks.json
+!.vscode/settings.json
+
+# ── Archivos temporales del sistema operativo ─────────────────────────────────
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# ── Cobertura de tests y análisis estático ────────────────────────────────────
+*.coverage
+*.coveragexml
+TestResults/
+coverage*/
+BenchmarkDotNet.Artifacts/
+
+# ── Publicación y despliegue ──────────────────────────────────────────────────
+publish/
+**/publish/
+*.pubxml
+*.pubxml.user
+*.publishproj
+
+# ── Secretos y configuración sensible ────────────────────────────────────────
+# (incluir si el proyecto tuviese appsettings de entorno)
+appsettings.Production.json
+appsettings.Local.json
+*.pfx
+*.p12
+secrets.json
+
+# ── Archivos de crashes y volcados ───────────────────────────────────────────
+*.dmp
+*.stackdump
+
+# ── Generación de código (Scaffolding, T4) ────────────────────────────────────
+*.tt
+!**/*.tt          # re-incluir templates fuente si los hay
+ScaffoldingReadMe.txt
+
+# ── Misc ──────────────────────────────────────────────────────────────────────
+*.pidb
+*.svclog
+*.scc
+*.ncb
+*.aps
+*.pch
+*.sbr
+*.tlb
+*.tlh
+*.bak
+*.cache
+*.ilk
+*.log
+*.manifest
+*.pdb
+*.res
+*.sbr
+*.xml.bak
+*~
+
+# ── Fin del .gitignore ────────────────────────────────────────────────────────

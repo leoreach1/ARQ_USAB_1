@@ -1,6 +1,6 @@
 using System;
 using System.Text;
-using Ejercicio1_Builder;
+using PatronesDiseno.Ejercicio1;
 using Ejercicio2_Bridge;
 using Ejercicio3_Mediator;
 
