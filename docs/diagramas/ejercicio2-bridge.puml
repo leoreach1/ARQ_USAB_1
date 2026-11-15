@@ -1,0 +1,66 @@
+@startuml ejercicio2-bridge
+left to right direction
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #F7F9FC
+  BorderColor #1F3A5F
+  ArrowColor #1F3A5F
+}
+hide circle
+title Ejercicio 2 - Bridge: notificaciones multiplataforma
+
+abstract class Notificacion <<Abstraction>> {
+  # _plataforma: IPlataformaVisualizacion
+  # Notificacion(plataforma: IPlataformaVisualizacion)
+  + CambiarPlataforma(nuevaPlataforma: IPlataformaVisualizacion): void
+  + {abstract} Enviar(mensaje: string): void
+}
+
+class NotificacionMensaje <<RefinedAbstraction>> {
+  + NotificacionMensaje(plataforma: IPlataformaVisualizacion)
+  + Enviar(mensaje: string): void
+}
+
+class NotificacionAlerta <<RefinedAbstraction>> {
+  + NotificacionAlerta(plataforma: IPlataformaVisualizacion)
+  + Enviar(mensaje: string): void
+}
+
+class NotificacionAdvertencia <<RefinedAbstraction>> {
+  + NotificacionAdvertencia(plataforma: IPlataformaVisualizacion)
+  + Enviar(mensaje: string): void
+}
+
+class NotificacionConfirmacion <<RefinedAbstraction>> {
+  + NotificacionConfirmacion(plataforma: IPlataformaVisualizacion)
+  + Enviar(mensaje: string): void
+}
+
+interface IPlataformaVisualizacion <<Implementor>> {
+  + Renderizar(titulo: string, cuerpo: string): void
+}
+
+class PlataformaWeb <<ConcreteImplementor>> {
+  + Renderizar(titulo: string, cuerpo: string): void
+}
+
+class PlataformaMovil <<ConcreteImplementor>> {
+  + Renderizar(titulo: string, cuerpo: string): void
+}
+
+class PlataformaEscritorio <<ConcreteImplementor>> {
+  + Renderizar(titulo: string, cuerpo: string): void
+}
+
+Notificacion o--> "1" IPlataformaVisualizacion : _plataforma (puente)
+NotificacionMensaje --|> Notificacion
+NotificacionAlerta --|> Notificacion
+NotificacionAdvertencia --|> Notificacion
+NotificacionConfirmacion --|> Notificacion
+IPlataformaVisualizacion <|.. PlataformaWeb
+IPlataformaVisualizacion <|.. PlataformaMovil
+IPlataformaVisualizacion <|.. PlataformaEscritorio
+@enduml

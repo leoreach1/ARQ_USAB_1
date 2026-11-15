@@ -1,0 +1,48 @@
+@startuml ejercicio3-mediator
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #F7F9FC
+  BorderColor #1F3A5F
+  ArrowColor #1F3A5F
+}
+hide circle
+title Ejercicio 3 - Mediator: chat grupal
+
+interface IChatMediator <<Mediator>> {
+  + RegistrarUsuario(usuario: Usuario): void
+  + EliminarUsuario(usuario: Usuario): void
+  + EnviarMensaje(mensaje: string, emisor: Usuario): void
+}
+
+class SalaChatMediator <<ConcreteMediator>> {
+  - _nombreSala: string {readOnly}
+  - _usuarios: List<Usuario> {readOnly}
+  + SalaChatMediator(nombreSala: string)
+  + RegistrarUsuario(usuario: Usuario): void
+  + EliminarUsuario(usuario: Usuario): void
+  + EnviarMensaje(mensaje: string, emisor: Usuario): void
+}
+
+abstract class Usuario <<Colleague>> {
+  # _mediator: IChatMediator {readOnly}
+  # _nombre: string {readOnly}
+  + Nombre: string {readOnly}
+  # Usuario(mediator: IChatMediator, nombre: string)
+  + {abstract} Enviar(mensaje: string): void
+  + {abstract} Recibir(mensaje: string, emisor: string): void
+}
+
+class UsuarioChat <<ConcreteColleague>> {
+  + UsuarioChat(mediator: IChatMediator, nombre: string)
+  + Enviar(mensaje: string): void
+  + Recibir(mensaje: string, emisor: string): void
+}
+
+SalaChatMediator .up.|> IChatMediator
+UsuarioChat -up-|> Usuario
+Usuario -left-> "1" IChatMediator : _mediator
+SalaChatMediator o--> "0..*" Usuario : _usuarios
+@enduml

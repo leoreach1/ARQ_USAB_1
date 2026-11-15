@@ -1,0 +1,38 @@
+
+==================================================================
+EJERCICIO 1: PATRÓN CREACIONAL - BUILDER (AUTOMÓVILES)
+==================================================================
+Configuración 1 (omitiendo opcionales): Automóvil [Motor: Gasolina 1.6L Estándar | Color: Gris Plata | Llantas: Rin 16 Aleación | Sonido: Básico 4 parlantes | Interiores: Tela | Techo solar: No | GPS: No]
+Configuración 2 (personalizado completo): Automóvil [Motor: Híbrido Turbo 2.5L | Color: Azul Noche | Llantas: Rin 19 Deportivas | Sonido: Bose 12 parlantes | Interiores: Cuero Nappa | Techo solar: Sí | GPS: Sí]
+Configuración 3 (opción vacía) rechazada: La opción no puede estar vacía. (Parameter 'motor')
+
+==================================================================
+EJERCICIO 2: PATRÓN ESTRUCTURAL - BRIDGE (NOTIFICACIONES)
+==================================================================
+[MÓVIL - Push Notification] (NUEVO MENSAJE) -> Camilo comentó en el documento de la actividad.
+[WEB - Toast HTML5] <h4>ALERTA CRÍTICA</h4><p>[Atención inmediata] Uso de CPU al 95% en servidor de producción.</p>
+[MÓVIL - Push Notification] (ALERTA CRÍTICA) -> [Atención inmediata] Uso de CPU al 95% en servidor de producción.
+[ESCRITORIO - Banner SO] *** Advertencia del Sistema *** : [Precaución] Su sesión expirará en 5 minutos.
+[WEB - Toast HTML5] <h4>Operación Confirmada</h4><p>[OK] Orden #4589 procesada exitosamente.</p>
+
+==================================================================
+EJERCICIO 3: PATRÓN DE COMPORTAMIENTO - MEDIATOR (CHAT GRUPAL)
+==================================================================
+[Sala 'Arquitectura de Software - Grupo 2'] -> Leonardo se unió al chat.
+[Sala 'Arquitectura de Software - Grupo 2'] -> Camilo se unió al chat.
+[Sala 'Arquitectura de Software - Grupo 2'] -> Cristian se unió al chat.
+
+[Arquitectura de Software - Grupo 2] Leonardo envía: "Hola equipo, ya subí los diagramas UML corregidos."
+   -> Pantalla de Camilo | Mensaje de Leonardo: Hola equipo, ya subí los diagramas UML corregidos.
+   -> Pantalla de Cristian | Mensaje de Leonardo: Hola equipo, ya subí los diagramas UML corregidos.
+
+[Arquitectura de Software - Grupo 2] Camilo envía: "Perfecto, yo ejecuto las pruebas en C# ahora mismo."
+   -> Pantalla de Leonardo | Mensaje de Camilo: Perfecto, yo ejecuto las pruebas en C# ahora mismo.
+   -> Pantalla de Cristian | Mensaje de Camilo: Perfecto, yo ejecuto las pruebas en C# ahora mismo.
+
+[Sala 'Arquitectura de Software - Grupo 2'] <- Cristian salió del chat.
+
+[Arquitectura de Software - Grupo 2] Leonardo envía: "Listo para consolidar el entregable final."
+   -> Pantalla de Camilo | Mensaje de Leonardo: Listo para consolidar el entregable final.
+
+[Arquitectura de Software - Grupo 2] Cristian no pertenece a la sala; mensaje descartado.

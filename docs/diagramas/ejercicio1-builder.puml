@@ -1,0 +1,52 @@
+@startuml ejercicio1-builder
+skinparam classAttributeIconSize 0
+skinparam backgroundColor white
+skinparam shadowing false
+skinparam defaultFontName Arial
+skinparam class {
+  BackgroundColor #F7F9FC
+  BorderColor #1F3A5F
+  ArrowColor #1F3A5F
+}
+hide circle
+title Ejercicio 1 - Builder: personalización de automóviles
+
+class AutomovilBuilder <<Builder>> {
+  ~ Motor: string = "Gasolina 1.6L Estándar"
+  ~ Color: string = "Blanco"
+  ~ Llantas: string = "Rin 16 Aleación"
+  ~ SistemaSonido: string = "Básico 4 parlantes"
+  ~ Interiores: string = "Tela"
+  ~ TieneTechoSolar: bool = false
+  ~ TieneGps: bool = false
+  + SetMotor(motor: string): AutomovilBuilder
+  + SetColor(color: string): AutomovilBuilder
+  + SetLlantas(llantas: string): AutomovilBuilder
+  + SetSistemaSonido(sonido: string): AutomovilBuilder
+  + SetInteriores(interiores: string): AutomovilBuilder
+  + ConTechoSolar(): AutomovilBuilder
+  + ConGps(): AutomovilBuilder
+  + Build(): Automovil
+  - {static} Validar(valor: string, nombreParametro: string): string
+}
+
+class Automovil <<Product>> {
+  + Motor: string {readOnly}
+  + Color: string {readOnly}
+  + Llantas: string {readOnly}
+  + SistemaSonido: string {readOnly}
+  + Interiores: string {readOnly}
+  + TieneTechoSolar: bool {readOnly}
+  + TieneGps: bool {readOnly}
+  ~ Automovil(builder: AutomovilBuilder)
+  + ToString(): string
+}
+
+AutomovilBuilder .right.> Automovil : «create»
+
+note bottom of Automovil
+Inmutable: propiedades sin "set".
+Constructor internal: solo el
+Builder puede instanciarlo.
+end note
+@enduml
