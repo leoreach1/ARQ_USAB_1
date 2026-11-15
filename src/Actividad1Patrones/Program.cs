@@ -40,6 +40,9 @@ namespace Actividad1Patrones
             }
         }
 
+        /// <summary>
+        /// Ejecuta el ejercicio 1, que implementa el patrón Builder para la construcción de automóviles
+        /// </summary>
         private static void EjecutarBuilder()
         {
             Titulo("EJERCICIO 1: PATRÓN CREACIONAL - BUILDER (AUTOMÓVILES)");
@@ -75,6 +78,10 @@ namespace Actividad1Patrones
             }
         }
 
+
+        /// <summary>
+        /// Ejecuta el ejercicio 2, que implementa el patrón Bridge para enviar notificaciones
+        /// </summary>
         private static void EjecutarBridge()
         {
             Titulo("EJERCICIO 2: PATRÓN ESTRUCTURAL - BRIDGE (NOTIFICACIONES)");
@@ -100,6 +107,9 @@ namespace Actividad1Patrones
             confirmacion.Enviar("Orden #4589 procesada exitosamente.");
         }
 
+        /// <summary>
+        /// Ejecuta el ejercicio 3, que implementa el patrón Mediator para un chat grupal
+        /// </summary>
         private static void EjecutarMediator()
         {
             Titulo("EJERCICIO 3: PATRÓN DE COMPORTAMIENTO - MEDIATOR (CHAT GRUPAL)");
@@ -124,7 +134,11 @@ namespace Actividad1Patrones
             leonardo.Enviar("Listo para consolidar el entregable final.");
             cristian.Enviar("¿Siguen ahí?");
         }
-
+        
+        /// <summary>
+        /// Muestra un título con líneas de separación en la consola
+        /// </summary>
+        /// <param name="texto"></param>
         private static void Titulo(string texto)
         {
             string linea = new string('=', 66);

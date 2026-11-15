@@ -8,14 +8,31 @@ namespace Ejercicio3_Mediator
     /// </summary>
     public sealed class SalaChatMediator : IChatMediator
     {
+        /// <summary>
+        /// Nombre de la sala de chat, utilizado para identificar los mensajes en la consola.
+        /// </summary>
         private readonly string _nombreSala;
+
+        /// <summary>
+        /// Lista de usuarios registrados en la sala de chat. El mediador mantiene esta lista para poder difundir los mensajes a todos los miembros.
+        /// </summary>
         private readonly List<Usuario> _usuarios = new List<Usuario>();
 
+        /// <summary>
+        /// Inicializa una nueva instancia de la clase <see cref="SalaChatMediator"/>.
+        /// </summary>
+        /// <param name="nombreSala">Nombre de la sala de chat.</param>
+        /// <exception cref="ArgumentNullException">Se lanza si <paramref name="nombreSala"/> es nulo.</exception>
         public SalaChatMediator(string nombreSala)
         {
             _nombreSala = nombreSala ?? throw new ArgumentNullException(nameof(nombreSala));
         }
 
+        /// <summary>
+        /// Registra un usuario en la sala de chat para que pueda enviar y recibir mensajes a través del mediador.
+        /// </summary>
+        /// <param name="usuario">Usuario a registrar.</param>
+        /// <exception cref="ArgumentNullException">Se lanza si <paramref name="usuario"/> es nulo.</exception>
         public void RegistrarUsuario(Usuario usuario)
         {
             if (usuario == null) throw new ArgumentNullException(nameof(usuario));
@@ -27,6 +44,11 @@ namespace Ejercicio3_Mediator
             }
         }
 
+        /// <summary>
+        /// Elimina un usuario de la sala de chat.
+        /// </summary>
+        /// <param name="usuario">Usuario a eliminar.</param>
+        /// <exception cref="ArgumentNullException">Se lanza si <paramref name="usuario"/> es nulo.</exception>
         public void EliminarUsuario(Usuario usuario)
         {
             if (usuario == null) throw new ArgumentNullException(nameof(usuario));
@@ -37,6 +59,12 @@ namespace Ejercicio3_Mediator
             }
         }
 
+        /// <summary>
+        /// Envía un mensaje a todos los usuarios registrados en la sala de chat.
+        /// </summary>
+        /// <param name="mensaje">Mensaje a enviar.</param>
+        /// <param name="emisor">Usuario que envía el mensaje.</param>
+        /// <exception cref="ArgumentNullException">Se lanza si <paramref name="mensaje"/> o <paramref name="emisor"/> son nulos.</exception>
         public void EnviarMensaje(string mensaje, Usuario emisor)
         {
             if (emisor == null) throw new ArgumentNullException(nameof(emisor));
